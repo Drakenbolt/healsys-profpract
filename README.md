@@ -14,6 +14,18 @@ A full-stack web application for managing healthcare appointments between doctor
   - Delete completed/cancelled appointments
 - Responsive design for both desktop and mobile
 
+## Test Users
+
+The system comes with two pre-configured test users:
+
+### Doctor Account
+- Email: doctor@example.com
+- Password: doctor123
+
+### Patient Account
+- Email: patient@example.com
+- Password: patient123
+
 ## Tech Stack
 
 ### Backend

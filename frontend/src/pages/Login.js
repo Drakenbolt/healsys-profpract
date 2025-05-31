@@ -6,6 +6,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [validationErrors, setValidationErrors] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,9 +19,22 @@ const Login = () => {
     }
   }, [navigate]);
 
+  const validateForm = () => {
+    const errors = {};
+    if (!email) errors.email = 'Email is required';
+    if (!password) errors.password = 'Password is required';
+    setValidationErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    setValidationErrors({});
+
+    if (!validateForm()) {
+      return;
+    }
 
     try {
       const response = await fetch('http://localhost:8000/api/token', {
@@ -65,6 +79,9 @@ const Login = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
+            {validationErrors.email && (
+              <div className="validation-error">{validationErrors.email}</div>
+            )}
           </div>
           <div className="form-group">
             <label htmlFor="password">Password:</label>
@@ -75,6 +92,9 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+            {validationErrors.password && (
+              <div className="validation-error">{validationErrors.password}</div>
+            )}
           </div>
           <button type="submit" className="auth-button">Login</button>
         </form>

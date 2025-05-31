@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div className="home-container">
       <header className="hero-section">
-        <h1>Welcome to HealthCare Plus</h1>
+        <h1>Welcome to Healsys Appointment Manager</h1>
         <p>Your trusted partner in healthcare</p>
         <div className="cta-buttons">
           <Link to="/login" className="cta-button">Login</Link>
